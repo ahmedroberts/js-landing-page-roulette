@@ -38,13 +38,14 @@ const mainSections = document.querySelectorAll('main section');
 */
 const pageBody = document.body;
 const numSections = mainSections.length;
-const newDiv = document.createElement('div')
+const testDiv = document.createElement('div')
 const testContent = "<br/><hr/><br/> >>> Number of Sectons: >>> " + numSections + " >>> <hr/><br/>";
-newDiv.innerHTML = testContent;
-pageBody.append(newDiv);
+testDiv.innerHTML = testContent;
+testDiv.classList.add("test_color_01");
+pageBody.append(testDiv);
 
 const mainHeader = document.querySelector('.page__header');
-mainHeader.append(newDiv);
+mainHeader.append(testDiv);
 
 
 
