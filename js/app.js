@@ -23,12 +23,28 @@
  * 
 */
 
+// ul nav element
+const mainNav = document.getElementById('navbar__list');
+
+// get all sections
+const mainSections = document.querySelectorAll('main section');
+
+
 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
+const pageBody = document.body;
+const numSections = mainSections.length;
+const newDiv = document.createElement('div')
+const testContent = "<br/><hr/><br/> >>> Number of Sectons: >>> " + numSections + " >>> <hr/><br/>";
+newDiv.innerHTML = testContent;
+pageBody.append(newDiv);
+
+const mainHeader = document.querySelector('.page__header');
+mainHeader.append(newDiv);
 
 
 
