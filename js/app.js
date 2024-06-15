@@ -56,6 +56,9 @@ mainHeader.append(testDiv);
 */
 
 // build the nav
+function buildMainNavigation () {
+  
+}
 
 
 // Add class 'active' to section when near top of viewport
