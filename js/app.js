@@ -55,11 +55,12 @@ mainHeader.append(testDiv);
  */
 
 // build the nav
-function buildMainNavigation() {
+function buildMainNavigationManually() {
   /** 1. create a list item
    * -- Test 1
    */
   const testNavLi = document.createElement("li");
+  testNavLi.classList.add("menu__link")
   // 2. add text to list item
   // testNavLi.textContent = 'Raikage & Roulette';
   // 3. create and anchor
@@ -79,6 +80,7 @@ function buildMainNavigation() {
    * -- Test 1
    */
   const testNavLi2 = document.createElement("li");
+  testNavLi2.classList.add("menu__link")
   // 2. add text to list item
   // testNavLi2.textContent = '2 Raikage & Roulette';
   // 3. create and anchor
@@ -97,7 +99,30 @@ function buildMainNavigation() {
   testNavAnchor2.style.color = "darkorchid";
 }
 
-buildMainNavigation();
+function buildMainNavDynamically() {
+  let i = 1;
+  for(const section of mainSections) {
+    console.log(i);
+    i = i++;
+    // create list Items
+    const navLi     = document.createElement('li');
+    navLi.classList.add("menu__link");
+    // crate anchor and attributes
+    const navAnchor = document.createElement('a');
+    navAnchor.href = `#${section.id}`;
+    navAnchor.textContent = section.dataset.nav;
+    // add anchor to list item
+    navLi.appendChild(navAnchor);
+    // add list item to mainNav
+    mainNavUl.append(navLi);
+  }
+
+  console.log('Build a dynamic Navigation bar.');
+}
+
+buildMainNavDynamically();
+buildMainNavigationManually();
+
 
 // Add class 'active' to section when near top of viewport
 
