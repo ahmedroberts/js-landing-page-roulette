@@ -23,6 +23,8 @@
  *
  */
 
+// Main section
+const mainMain = document.querySelector("main");
 // ul nav element
 const mainNavUl = document.getElementById("navbar__list");
 
@@ -60,7 +62,7 @@ function buildMainNavigationManually() {
    * -- Test 1
    */
   const testNavLi = document.createElement("li");
-  testNavLi.classList.add("menu__link")
+  testNavLi.classList.add("menu__link");
   // 2. add text to list item
   // testNavLi.textContent = 'Raikage & Roulette';
   // 3. create and anchor
@@ -80,7 +82,7 @@ function buildMainNavigationManually() {
    * -- Test 1
    */
   const testNavLi2 = document.createElement("li");
-  testNavLi2.classList.add("menu__link")
+  testNavLi2.classList.add("menu__link");
   // 2. add text to list item
   // testNavLi2.textContent = '2 Raikage & Roulette';
   // 3. create and anchor
@@ -101,14 +103,14 @@ function buildMainNavigationManually() {
 
 function buildMainNavDynamically() {
   let i = 1;
-  for(const section of mainSections) {
+  for (const section of mainSections) {
     console.log(i);
     i = i++;
     // create list Items
-    const navLi     = document.createElement('li');
+    const navLi = document.createElement("li");
     navLi.classList.add("menu__link");
     // crate anchor and attributes
-    const navAnchor = document.createElement('a');
+    const navAnchor = document.createElement("a");
     navAnchor.href = `#${section.id}`;
     navAnchor.textContent = section.dataset.nav;
     // add anchor to list item
@@ -117,12 +119,38 @@ function buildMainNavDynamically() {
     mainNavUl.append(navLi);
   }
 
-  console.log('Build a dynamic Navigation bar.');
+  console.log("Build a dynamic Navigation bar.");
 }
+/// ---------------------------------------------------------------------------------
+//  -- Adds a section
+function addWinningPlay() {
+  // Adds a new section to the main content area and updates the navigation list
+  const newSection = document.createElement("section");
+  newSection.id = "winning";
+  newSection.dataset["nav"] = "Winning Play";
+  newSection.innerHTML = `<div class="landing__container">
+<h2>Winning Play</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed convallis sollicitudin mauris ac tincidunt. 
+Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, 
+ut pulvinar quam nunc eu augue. 
+Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. 
+Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. 
+Phasellus imperdiet porta orci eget mollis.  Morbi a tincidunt felis. 
+Sed leo nunc, pharetra et elementum non, faucibus vitae elit. 
+Integer nec libero venenatis libero ultricies molestie semper in tellus. 
+Sed congue et odio sed euismod. Pellentesque maximus imperdiet elit a pharetra. 
+Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus.</p>
 
-buildMainNavDynamically();
-buildMainNavigationManually();
+<p>Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, 
+ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, 
+vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet 
+porttitor tortor, eget elementum tortor mollis non.</p>
+</div>`;
 
+  // Section creation and appending omitted for brevity
+  mainMain.appendChild(newSection);
+}
 
 // Add class 'active' to section when near top of viewport
 
@@ -135,6 +163,9 @@ buildMainNavigationManually();
  */
 
 // Build menu
+addWinningPlay();
+buildMainNavDynamically();
+buildMainNavigationManually();
 
 // Scroll to section on link click
 
