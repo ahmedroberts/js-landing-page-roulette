@@ -1,12 +1,19 @@
-/*
- *
- * CSS written based on SMACSS architecture.
- * To learn more, visit: http://smacss.com/
- * 
- * For simplicity, no reset or normalize is added. 
- * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
- *
-*/
+/* ****************** Ahmed Raikage Reset ****************** */
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+/* ****************** Ahmed Raikage Reset ****************** */
 
 /* ---- Base Rules ---- */
 body {
@@ -64,27 +71,55 @@ section {
 
 /* ---- Module Rules ---- */
 
+/* Raikage Start ------ *** may delete later *** for main logo */
+.navbar__menu {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1em;
+}
+
+.navbar__menu > a {
+  text-decoration: none;
+  padding: .25em 1em;
+}
+.navbar__menu > a:hover {
+  background: #999;
+  color: #fff;
+  transition: ease 0.3s all;
+}
+/* Raikage End */
+
 /* Navigation Styles*/
 .navbar__menu ul {
-  padding-left: 0;
+  /* padding-left: 0;
   margin: 0;
-  text-align: right;
+  text-align: right; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .navbar__menu li {
-  display: inline-block;
+  /* display: inline-block; */
+  margin-right: .5em;
 }
 
 .navbar__menu .menu__link {
   display: block;
-  padding: 1em;
+  /* padding: 1em; */
+  padding: .25em 1em;
   font-weight: bold;
   text-decoration: none;
-  color: #000;
+  /* color: #000; */
 }
 
-.navbar__menu .menu__link:hover {
-  background: #333;
+.menu__link:hover {
+  background: #999;
+  color: #fff;
+  transition: ease 0.3s all;
+}
+.menu__link a:hover {
   color: #fff;
   transition: ease 0.3s all;
 }
@@ -203,7 +238,6 @@ section:nth-of-type(3n + 1) .landing__container::after {
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.your-active-class {
   background: rgb(0, 0, 0);
   background: linear-gradient(
