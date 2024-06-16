@@ -36,6 +36,7 @@ function createSectionFragment() {
 
   return sectionFragment;
 }
+/// ---------------------------------------------------------------------------------
 // create winning__play section
 function createWinningPlaySection() {
   const winningPlaySection = document.createElement("section");
@@ -49,7 +50,9 @@ function createWinningPlaySection() {
   mainMain.append(winningPlaySection);
 }
 
-createWinningPlaySection();
+/// ---------------------------------------------------------------------------------
+//  -- this will add another section if uncommented.
+// createWinningPlaySection();
 
 /**
  * End Helper Functions
@@ -91,5 +94,29 @@ function buildMainNavDynamically() {
 buildMainNavDynamically();
 
 // Scroll to section on link click
+/// ---------------------------------------------------------------------------------
+//  -- Adds a smooth scroll
+function scrollToSections() {
+  // get all anchors in the main navigation 
+  const navMenuLinks = document.querySelectorAll('.menu__link a');
+  console.log(navMenuLinks.length);
+  // add smooth scroll to each anchor
+  for(const navAnchor of navMenuLinks) {
+    let hrefValue = navAnchor.getAttribute("href");
+    hrefValue = hrefValue.substring(1);
+
+    const sectionElement = String(document.getElementById(hrefValue));
+    console.log('first : ', sectionElement)
+    // sectionElement = sectionElement.substring(1);
+
+    console.log(hrefValue);
+    navAnchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      sectionElement.scrollIntoView({ behavior: 'smooth'});
+      // hrefValue.scrollIntoView({ behavior: 'smooth' });
+   });
+  }
+}
+scrollToSections();
 
 // Set sections as active
