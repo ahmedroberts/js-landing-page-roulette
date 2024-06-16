@@ -24,11 +24,8 @@ const mainSections = document.querySelectorAll("main section"); // get all secti
 /// ---------------------------------------------------------------------------------
 //  -- Builds the main navigation based on sections
 function buildMainNavDynamically() {
-  let i = 1;
   for (const section of mainSections) {
-    console.log(i);
-    i = i++;
-    // create list Items
+    // create list items
     const navLi = document.createElement("li");
     navLi.classList.add("menu__link");
     // crate anchor and attributes

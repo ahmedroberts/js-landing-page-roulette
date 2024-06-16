@@ -1,3 +1,20 @@
+/* ****************** Ahmed Raikage Reset ****************** */
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+/* ****************** Ahmed Raikage Reset ****************** */
+
 /* ---- Base Rules ---- */
 body {
   background: rgb(136, 203, 171);
@@ -54,27 +71,55 @@ section {
 
 /* ---- Module Rules ---- */
 
+/* Raikage Start ------ *** may delete later *** for main logo */
+.navbar__menu {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1em;
+}
+
+.navbar__menu > a {
+  text-decoration: none;
+  padding: .25em 1em;
+}
+.navbar__menu > a:hover {
+  background: #999;
+  color: #fff;
+  transition: ease 0.3s all;
+}
+/* Raikage End */
+
 /* Navigation Styles*/
 .navbar__menu ul {
-  padding-left: 0;
+  /* padding-left: 0;
   margin: 0;
-  text-align: right;
+  text-align: right; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .navbar__menu li {
-  display: inline-block;
+  /* display: inline-block; */
+  margin-right: .5em;
 }
 
 .navbar__menu .menu__link {
   display: block;
-  padding: 1em;
+  /* padding: 1em; */
+  padding: .25em 1em;
   font-weight: bold;
   text-decoration: none;
-  color: #000;
+  /* color: #000; */
 }
 
-.navbar__menu .menu__link:hover {
-  background: #333;
+.menu__link:hover {
+  background: #999;
+  color: #fff;
+  transition: ease 0.3s all;
+}
+.menu__link a:hover {
   color: #fff;
   transition: ease 0.3s all;
 }
