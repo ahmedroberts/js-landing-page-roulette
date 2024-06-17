@@ -193,13 +193,13 @@ function addBackToTopButton(){
 //     document.addEventListener("scroll", makeActive);
 // })
 
-// function hideHeader(){
-//     if(!isHovering  && !pageHeader.classList.contains("hidden")){pageHeader.classList.add("hidden")}
+function hideHeader(){
+    if(!isHovering  && !pageHeader.classList.contains("hidden")){pageHeader.classList.add("hidden")}
 
-// }
-// function showHeader(){
-//     pageHeader.classList.remove("hidden");
-// }
+}
+function showHeader(){
+    pageHeader.classList.remove("hidden");
+}
 
 // Hides the page header after a delay when scrolling stops
 document.addEventListener("scrollend", (e) =>{

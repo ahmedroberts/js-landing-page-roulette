@@ -4,16 +4,19 @@
  */
 
 const mainMain = document.querySelector("main"); // Main section
-const mainNavUl = document.getElementById("navbar__list"); // ul nav element
-const mainSections = document.querySelectorAll("main section"); // get all sections
+const mainNavList = document.getElementById("navbar__list"); // ul nav element
+// const mainSections = document.querySelectorAll("main section"); // get all sections
 
 /**
  * End Global Variables
  * Start Helper Functions
  *
  */
-
-
+/// ---------------------------------------------------------------------------------
+//  -- Retrieves all main sections
+function getMainSections() {
+  return document.querySelectorAll("main section");
+}
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -24,34 +27,33 @@ const mainSections = document.querySelectorAll("main section"); // get all secti
 
 /// ---------------------------------------------------------------------------------
 //  -- Builds the main navigation based on sections
-function buildMainNavDynamically() {
+function buildMainNav() {
+  const mainSections = getMainSections();
   for (const section of mainSections) {
     // create list items
-    const navLi = document.createElement("li");
-    navLi.classList.add("menu__link");
+    const navListItem = document.createElement("li");
+    navListItem.classList.add("menu__link");
     // crate anchor and attributes
     const navAnchor = document.createElement("a");
     navAnchor.href = `#${section.id}`;
     navAnchor.textContent = section.dataset.nav;
+    // add anchor to list item
+    navListItem.appendChild(navAnchor);
+    // add list item to mainNav
+    mainNavList.append(navListItem);
 
     // clicking an item from the navigation menu will scroll the section into view
     navAnchor.addEventListener("click", (e) => {
+      console.log('navAnchor event called ... --AOR')
+      e.preventDefault();
       section.scrollIntoView({
         behavior: "smooth",
-        block: "end"
+        block: "end",
+        inline: "nearest",
       });
     });
-
-    // add anchor to list item
-    navLi.appendChild(navAnchor);
-    // add list item to mainNav
-    mainNavUl.append(navLi);
   }
 }
-
-// Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
 
 /**
  * End Main Functions
@@ -60,7 +62,7 @@ function buildMainNavDynamically() {
  */
 
 // Build menu - initialize functions
-buildMainNavDynamically();
+buildMainNav();
 
 // Scroll to section on link click
 /// ---------------------------------------------------------------------------------

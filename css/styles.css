@@ -74,9 +74,8 @@ section {
 /* Raikage Start ------ *** may delete later *** for main logo */
 .navbar__menu {
   display:flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding-left: 1em;
 }
 
 .navbar__menu > a {
