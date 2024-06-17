@@ -42,6 +42,7 @@ function buildMainNav() {
     // add list item to mainNav
     mainNavList.append(navListItem);
 
+    // scrollToSections();
     // clicking an item from the navigation menu will scroll the section into view
     navAnchor.addEventListener("click", (e) => {
       console.log('navAnchor event called ... --AOR')
@@ -64,30 +65,19 @@ function buildMainNav() {
 // Build menu - initialize functions
 buildMainNav();
 
-// Scroll to section on link click
-/// ---------------------------------------------------------------------------------
-//  -- Adds a smooth scroll
-function scrollToSections() {
-  // get all anchors in the main navigation
-  const navMenuLinks = document.querySelectorAll(".menu__link a");
-  console.log(navMenuLinks.length);
-  // add smooth scroll to each anchor
-  for (const navAnchor of navMenuLinks) {
-    let hrefValue = navAnchor.getAttribute("href");
-    hrefValue = hrefValue.substring(1);
+// ****************************  Slowly *******************
 
-    const sectionElement = String(document.getElementById(hrefValue));
-    console.log("first : ", sectionElement);
-    // sectionElement = sectionElement.substring(1);
+const navMenuList = document.querySelector('.navbar__list');
 
-    console.log(hrefValue);
-    navAnchor.addEventListener("click", (e) => {
-      e.preventDefault();
-      sectionElement.scrollIntoView({ behavior: "smooth" });
-      // hrefValue.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-}
-// scrollToSections();
-
+navMenuList.addEventListener("click", setActive);
 // Set sections as active
+function setActive (event) {
+event.preventDefault();
+const navMenuItems = document.querySelector('.menu__link a');
+navMenuItems.foreach(item => {
+  item.addEventListener('click', () => {
+    document.querySelector('.active').classList.remove('active');
+    item.classList.add('active');
+    item.parentElement.classList.add('active');
+  })
+}) }
