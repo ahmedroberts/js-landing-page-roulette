@@ -7,7 +7,6 @@ const container = document.querySelector(".container");
 let isHovering = false;
 let isScrolling = false;
 
-
 // Creates a navigation list and a button for scrolling to the top of the page
 const navList = document.createElement("ul");
 navList.className = "nav-list";
@@ -47,8 +46,6 @@ function createNavList(){
     
 }
 createNavList();
-
-
 
 // Adds click event listener to navigation list for smooth scrolling
 navList.addEventListener("click", scroll);
@@ -132,10 +129,9 @@ goToTopButton.addEventListener("click",  (evt) =>{
         behavior: "smooth"
     })
 });
+
 // Initially hides the "Go to Top" button
 goToTopButton.classList.add("hidden");
-
-
 
 // Shows or hides the "Go to Top" button based on scroll position
 function addBackToTopButton(){
@@ -210,10 +206,9 @@ document.addEventListener("scrollend", (e) =>{
     
     setTimeout(hideHeader, 1500);
 });
+
 // Ensures the page header is shown when hovered over
 pageHeader.addEventListener("mouseover", showHeader);
-
-
 
 pageHeader.addEventListener("mouseover", function() {
     isHovering = true; // Update flag to true when mouse enters
