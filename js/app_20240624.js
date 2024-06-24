@@ -23,20 +23,19 @@
  *
  */
 
-const container = document.querySelector(".container");
-// const goToTopButton = document.createElement("button");************************************
-const mainEl = document.querySelector(".page__main");
-const navList = document.createElement("ul");
 const pageHeader = document.querySelector(".page__header")
 const pageNav = document.querySelector(".page__nav");
-
+const mainEl = document.querySelector(".page__main");
+const container = document.querySelector(".container");
 let isHovering = false;
 let isScrolling = false;
 
+const navList = document.createElement("ul");
 navList.className = "nav-list";
-// goToTopButton.textContent= "Go to Top"; *********************************************************
-// goToTopButton.className = "to-top-btn"********************************************
-// mainEl.insertAdjacentElement("afterend", goToTopButton)  *********************************************
+const goToTopButton = document.createElement("button");
+goToTopButton.textContent= "Go to Top";
+goToTopButton.className = "to-top-btn"
+mainEl.insertAdjacentElement("afterend", goToTopButton)
 
 /**
  * End Global Variables
@@ -44,18 +43,14 @@ navList.className = "nav-list";
  *
  */
 
-/*  *************************************************************
+
 function hideHeader(){
   if(!isHovering  && !pageHeader.classList.contains("hidden")){pageHeader.classList.add("hidden")}
 
-} *****************************
- */
-
-/*
+}
 function showHeader(){
   pageHeader.classList.remove("hidden");
 }
-  */
 
 
 // Retrieves all section elements within the main content area
@@ -65,8 +60,9 @@ function getSections(){
 
 // Populates the navigation list based on sections available in the main content area
 function createNavList(){
+  
   const fragment = document.createDocumentFragment();
-//   hideHeader() // Temporarily hides the navigation during setup              *********************************************
+  hideHeader() // Temporarily hides the navigation during setup
   pageNav.innerHTML = ""; // Clears existing navigation items
   navList.innerHTML = "";
   getSections().forEach(section =>{
@@ -82,18 +78,11 @@ function createNavList(){
       navList.appendChild(listItem);
       fragment.appendChild(navList)
   })
-//   showHeader(); // Re-displays the navigation with new items ***********************************************************
+  showHeader(); // Re-displays the navigation with new items
   pageNav.appendChild(fragment);
+  // pageNav.appendChild(navList)
+  
 }
-
-// Retrieves the navigation item corresponding to a given section ID
-function getNavItem(id){
-    for(const item of navList.children){
-         if(item.children[0].href.split("#")[1]  === id){
-            return item;
-         }
-    }
-  }
 
 /**
  * End Helper Functions
@@ -108,52 +97,6 @@ function getNavItem(id){
 
 // Scroll to anchor ID using scrollTO event
 
-// Handles the smooth scrolling to sections when navigation items are clicked
-function scroll(event){
-    event.preventDefault();
-    isScrolling = true;
-    const target = event.target;
-    if(target.tagName =="A"){
-        document.removeEventListener("scroll", makeActive);
-        getSections().forEach(section => section.classList.remove("your-active-class"))
-        for (item of navList.children){
-            item.classList.remove("active");
-        }
-        const id = "#" + target.href.split("#")[1];
-        const section = document.querySelector(id);
-    
-        section.classList.toggle('your-active-class');
-        section.scrollIntoView({
-            behavior: "smooth",
-        });
-        target.parentElement.classList.add("active");
-    }
-  }
-  
-  // Dynamically updates the active class on sections and navigation items based on scroll position
-  function makeActive(){
-    isScrolling = true;
-    setTimeout(() => {isScrolling = false;}, 500);
-  
-    // showHeader();   ********************************************************************
-    // addBackToTopButton(); **************************************************************
-    getSections().forEach(section =>{
-       const boundingBox =  section.getBoundingClientRect();
-       if (boundingBox.top < 100  && boundingBox.bottom > boundingBox.height /4){
-            if(!section.className.includes('your-active-class')){
-                section.classList.add('your-active-class');
-            }
-            for (const item of navList.children){
-                item.classList.remove("active");
-            }
-            const activeNav = getNavItem(section.id);
-            activeNav.classList.add("active");
-       }
-       else{
-        section.classList.remove('your-active-class');
-       }
-    })
-  }
 /**
  * End Main Functions
  * Begin Events
@@ -166,7 +109,63 @@ createNavList();
 navList.addEventListener("click", scroll);
 
 // Scroll to section on link click
+// Handles the smooth scrolling to sections when navigation items are clicked
+function scroll(event){
+  event.preventDefault();
+  isScrolling = true;
+  const target = event.target;
+  if(target.tagName =="A"){
+      document.removeEventListener("scroll", makeActive);
+      getSections().forEach(section => section.classList.remove("your-active-class"))
+      for (item of navList.children){
+          item.classList.remove("active");
+      }
+      const id = "#" + target.href.split("#")[1];
+      const section = document.querySelector(id);
+  
+      section.classList.toggle('your-active-class');
+      section.scrollIntoView({
+          behavior: "smooth",
+      });
+      target.parentElement.classList.add("active");
+  }
+}
+
+// Dynamically updates the active class on sections and navigation items based on scroll position
+function makeActive(){
+  isScrolling = true;
+  setTimeout(() => {isScrolling = false;}, 500);
+
+  showHeader();
+  addBackToTopButton();
+  getSections().forEach(section =>{
+     const boundingBox =  section.getBoundingClientRect();
+     if (boundingBox.top < 100  && boundingBox.bottom > boundingBox.height /4){
+          if(!section.className.includes('your-active-class')){
+              section.classList.add('your-active-class');
+          }
+          for (const item of navList.children){
+              item.classList.remove("active");
+          }
+          const activeNav = getNavItem(section.id);
+          activeNav.classList.add("active");
+     }
+     else{
+      section.classList.remove('your-active-class');
+     }
+  })
+}
 document.addEventListener("scroll", makeActive);
+
+
+// Retrieves the navigation item corresponding to a given section ID
+function getNavItem(id){
+  for(const item of navList.children){
+       if(item.children[0].href.split("#")[1]  === id){
+          return item;
+       }
+  }
+}
 
 createNavList()
 
@@ -176,7 +175,6 @@ createNavList()
 // ------------------------------------------------------------------------------------
 /* Extra Standouts */
 
-/*    *********************************************
 // Handles the "Go to Top" button's click event for smooth scrolling to the top of the page
 goToTopButton.addEventListener("click",  (evt) =>{
   window.scrollTo({
@@ -198,8 +196,7 @@ function addBackToTopButton(){
   else{
       goToTopButton.classList.add("hidden");
   }
-}     ***********************************************
-*/ 
+}
 
 // Hides the page header after a delay when scrolling stops
 document.addEventListener("scrollend", (e) =>{
@@ -208,16 +205,16 @@ document.addEventListener("scrollend", (e) =>{
       document.addEventListener("scroll", makeActive);
   }
   
-//   setTimeout(hideHeader, 1500);    *******************************************************
+  setTimeout(hideHeader, 1500);
 });
 // Ensures the page header is shown when hovered over
-// pageHeader.addEventListener("mouseover", showHeader);  *************************************************
+pageHeader.addEventListener("mouseover", showHeader);
 
 
 
 pageHeader.addEventListener("mouseover", function() {
   isHovering = true; // Update flag to true when mouse enters
-//   showHeader();   ************************************************************
+  showHeader();
 });
 
 // Updates the isHovering flag when the mouse leaves the header
