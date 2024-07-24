@@ -108,7 +108,7 @@ createNavList()
 // Handles the "Go to Top" button's click event for smooth scrolling to the top of the page
 goToTopButton.addEventListener("click",  (evt) =>{
     window.scrollTo({
-        top: 0,
+        top: 500,
         behavior: "smooth"
     })
 });
@@ -126,6 +126,7 @@ function addBackToTopButton(){
     }
 }
 
+// Show and hide the page header
 function hideHeader(){
     if(!isHovering  && !pageHeader.classList.contains("hidden"))
       {pageHeader.classList.add("hidden")}
