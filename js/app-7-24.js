@@ -1,4 +1,4 @@
-// Define Global Variables
+// Selects various elements from the DOM to manipulate or interact with
 const pageHeader = document.querySelector(".page__header")
 const pageNav = document.querySelector(".page__nav");
 const mainEl = document.querySelector(".page__main");
@@ -6,17 +6,15 @@ const container = document.querySelector(".container");
 let isHovering = false;
 let isScrolling = false;
 
-// Create a the navigation list
+// Creates a navigation list and a button for scrolling to the top of the page
 const navList = document.createElement("ul");
 navList.className = "nav-list";
-
-// Create a go to top button
 const goToTopButton = document.createElement("button");
 goToTopButton.textContent= "Go to Top";
 goToTopButton.className = "to-top-btn"
 mainEl.insertAdjacentElement("afterend", goToTopButton)
 
-// Retrieve all the section elements within main page
+// Retrieves all section elements within the main content area
 function getSections(){
     return  document.querySelectorAll(".page__main section");
 }
@@ -41,6 +39,7 @@ function createNavList(){
         fragment.appendChild(navList)
     })
     pageNav.appendChild(fragment);
+    
 }
 createNavList();
 
