@@ -148,6 +148,50 @@ function addBackToTopButton(){
     }
 }
 
+// // Opens a modal for adding a new section to the page
+// function openAddSection(){
+    
+//     pageHeader.classList.add("hidden");
+//     document.removeEventListener("scroll", makeActive);
+//     modal.style.visibility = "visible";
+//     modal.style.opacity = "1";
+// }
+
+// // Creates a new section based on user input from the modal
+// function createSection(event){
+//     const start = performance.now();
+//     event.preventDefault();
+//     const formData = new FormData(event.target);
+//     const sectionName = formData.get("sectionName");
+//     const sectionContent = formData.get("sectionContent").split("\n");
+//     const content = sectionContent.map((item) =>  (item !== "") ? `<p>${item}</p>` : null)
+
+//     const idNumber = parseInt(navList.lastChild.children[0].href.split("#")[1].split("section")[1]) + 1
+//     const newSection = document.createElement("section");
+//     newSection.id="section" + idNumber;
+//     newSection.dataset["nav"] = sectionName || "Section " + idNumber;
+//     newSection.innerHTML = ` <div class="landing__container">
+//     <h2>${sectionName}</h2>${content.join("") }</div>`;
+
+//     mainEl.appendChild(newSection);
+//     createNavList()
+//     event.target.reset();
+//     modal.style.visibility = "hidden";
+//     modal.style.opacity = "0";
+//     document.addEventListener("scroll", makeActive);
+//     pageHeader.classList.remove("hidden");
+
+//     console.log("Performance: " , performance.now() - start);
+// }
+
+// // Closes the modal and re-enables dynamic section highlighting
+// const closeModal = document.querySelector(".close-modal");
+// closeModal.addEventListener("click", () =>{
+//     modal.style.visibility = "hidden";
+//     modal.style.opacity = "0";
+//     pageHeader.classList.remove("hidden");
+//     document.addEventListener("scroll", makeActive);
+// })
 
 function hideHeader(){
     if(!isHovering  && !pageHeader.classList.contains("hidden")){pageHeader.classList.add("hidden")}
