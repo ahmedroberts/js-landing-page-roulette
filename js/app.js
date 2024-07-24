@@ -2,7 +2,6 @@
 const pageHeader = document.querySelector(".page__header")
 const pageNav = document.querySelector(".page__nav");
 const mainEl = document.querySelector(".page__main");
-const container = document.querySelector(".container");
 let isHovering = false;
 let isScrolling = false;
 
@@ -118,7 +117,7 @@ goToTopButton.classList.add("hidden");
 
 // Shows or hides the "Go to Top" button based on scroll position
 function addBackToTopButton(){
-    const rect = container.getBoundingClientRect();
+    const rect = mainEl.getBoundingClientRect();
     if(window.innerHeight/2 + rect.top < 0 ){
         goToTopButton.classList.remove("hidden");
     } 
@@ -142,7 +141,6 @@ document.addEventListener("scrollend", (e) =>{
         isScrolling = false;
         document.addEventListener("scroll", makeActive);
     }
-    
     setTimeout(hideHeader, 1500);
 });
 // Ensures the page header is shown when hovered over
